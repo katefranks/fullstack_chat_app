@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
     #local
     'api.apps.ApiConfig',
-    'chatapp.apps.ChatappConfig',
+    'instantMessages.apps.InstantMessagesConfig',
     'frontend.apps.FrontendConfig',
 ]
 
