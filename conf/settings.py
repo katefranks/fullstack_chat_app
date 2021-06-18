@@ -27,7 +27,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'fullstack-chat-app-katefranks.herokuapp.com/',
+    'fullstack-chat-app-katefranks.herokuapp.com',
     '127.0.0.1',
 ]
 
