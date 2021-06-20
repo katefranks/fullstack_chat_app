@@ -70,12 +70,12 @@ componentDidMount(){
 
       <div className="chat-app-container">
       <header className="chat-app-header">Instant Messenger</header>
+      <ul instantmessages={this.state.instantMessages} className="instant-message-window">{instantMessages}</ul>
       <form onSubmit={this.addInstantMessage}>
         <input type="text" name="user_name" value={this.state.user_name} onChange={this.handleInput} placeholder="Enter Name"/>
         <input type="text" name="message_text" value={this.state.message_text} onChange={this.handleInput} placeholder="Enter Text"/>
         <button type="submit" value="Submit">Submit</button>
-      </form>
-      <ul instantmessages={this.state.instantMessages} className="instant-message-window">{instantMessages}</ul>
+      </form>  
       </div>
     )
   }
