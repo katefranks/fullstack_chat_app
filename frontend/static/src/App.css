@@ -1,4 +1,77 @@
-.App {
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+body {
+  background-color: #394453;
+  /* display: flex;
+  justify-content: center; */
+}
+
+.chat-app-container {
+  background-color: #4A678A;
+  width: 75%;
+  margin: 30px;
+  border: 5px solid #202A36;
+  box-shadow: 2px 2px 5px #292C33;
+  border-radius: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chat-app-header {
+  background-color: #5B7C9F;
+  border-radius: 35px 30px 0px 0px;
+  color: #FFF;
+  height: 90px;
+  width: 100%;
+  text-align: center;
+}
+
+.instant-message-window{
+  padding-inline-start: 0px;
+  flex-direction: column;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  width: 95%;
+
+}
+
+.instant-messages {
+  background-color: #FFF;
+  list-style-type: none;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 5px #292C33;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instant-message-text-display {
+  background-color: #64A2E4;
+  color: #FFF;
+  align-self: flex-end;
+  border-radius: 20px;
+  box-shadow: 2px 2px 5px #888888;
+  width: 40%;
+  padding: 20px;
+  margin: 10px 25px 10px 25px;
+}
+
+li:nth-child(odd) .instant-message-text-display {
+    background-color: #D6D7DD;
+    color: black;
+    box-shadow: 2px 2px 5px #888888;
+    align-self: flex-start;
+}
+/* .App {
   text-align: center;
 }
 
@@ -7,32 +80,18 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
