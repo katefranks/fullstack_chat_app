@@ -5,6 +5,8 @@
 
 body {
   background-color: #394453;
+  /* background-color: aqua; /* For browsers that do not support gradients */
+  /* background-image: linear-gradient(to bottom right, magenta, aqua);  */
 
 }
 
@@ -27,8 +29,14 @@ body {
   color: #FFF;
   height: 90px;
   width: 100%;
+  margin-bottom: 20px;
   text-align: center;
   font-size: 40px;
+}
+
+#header-text{
+  margin-top: 20px;
+  text-shadow: 2px 2px 5px #292C33;
 }
 
 .instant-message-window{
@@ -56,6 +64,8 @@ body {
 
 .instant-message-text-display {
   background-color: #64A2E4;
+  font-size: 20px;
+  text-shadow: 2px 2px 1px #292c33;
   color: #FFF;
   align-self: flex-end;
   border-radius: 20px;
@@ -68,8 +78,77 @@ body {
 li:nth-child(odd) .instant-message-text-display {
     background-color: #D6D7DD;
     color: black;
+    text-shadow: 1px 1px 1px #888888;
     box-shadow: 2px 2px 5px #888888;
     align-self: flex-start;
+}
+
+.user_image{
+  /* background-color: #65D46E; */
+  background-color: aqua; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom right, magenta, aqua);
+  height: 65px;
+  width: 65px;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 50%;
+  border: none;
+  margin: 0px;
+  box-shadow: 2px 2px 5px #292c33;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li:nth-child(odd) .user_image{
+  background-color: magenta; /* For browsers that do not support gradients */
+  background-image: linear-gradient(to bottom right, aqua, magenta);
+}
+
+.input-form{
+  margin-bottom: 20px;
+}
+
+.input-box {
+  background-color: #aebfd1;
+  width: 300px;
+  height: 70px;
+  margin: 10px;
+  border-radius: 20px;
+  border: 1px solid #999999;
+  box-shadow: 2px 2px 5px #292C33;
+  padding: 5px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.input-box:hover{
+  box-shadow: 4px 4px 5px #292C33;
+  transform: translateY(1px);
+}
+
+.form-button{
+  background-color: #65D46E;
+  height: 65px;
+  width: 65px;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 2px 2px 5px #292C33;
+}
+
+.form-button:hover{
+  cursor: pointer;
+  box-shadow: 4px 4px 5px #292C33;
+  transform: translateY(1px);
+}
+
+.form-button:active {
+  transform: translateY(3px) ;
+  /* transform: translateX(1px); */
 }
 /* .App {
   text-align: center;

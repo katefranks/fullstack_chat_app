@@ -60,8 +60,8 @@ componentDidMount(){
   render(){
     const instantMessages = this.state.instantMessages.map(instantMessage => (
       <li className="instant-messages" key={instantMessage.id}>
-      <p>{instantMessage.created_at}</p>
-      <p>{instantMessage.user_name}</p>
+      <p>Sent at: {instantMessage.created_at}</p>
+      <p className="user_image">{instantMessage.user_name}</p>
       <p className="instant-message-text-display">{instantMessage.message_text}</p>
       </li>
     ))
@@ -69,13 +69,15 @@ componentDidMount(){
 
 
       <div className="chat-app-container">
-      <header className="chat-app-header">Instant Messenger</header>
+      <header className="chat-app-header">
+        <p id="header-text">Instant Messenger</p>
+      </header>
       <ul instantmessages={this.state.instantMessages} className="instant-message-window">{instantMessages}</ul>
-      <form onSubmit={this.addInstantMessage}>
-        <input type="text" name="user_name" value={this.state.user_name} onChange={this.handleInput} placeholder="Enter Name"/>
-        <input type="text" name="message_text" value={this.state.message_text} onChange={this.handleInput} placeholder="Enter Text"/>
-        <button type="submit" value="Submit">Submit</button>
-      </form>  
+      <form className="input-form" onSubmit={this.addInstantMessage}>
+        <input className="input-box" type="text" name="user_name" value={this.state.user_name} onChange={this.handleInput} placeholder="Enter Name"/>
+        <input className="input-box" type="text" name="message_text" value={this.state.message_text} onChange={this.handleInput} placeholder="Enter Text"/>
+        <button className="form-button" type="submit" value="Submit">SEND</button>
+      </form>
       </div>
     )
   }
