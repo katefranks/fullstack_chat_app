@@ -38,7 +38,7 @@ render(){
     <br/>
     <button type="submit">Submit</button>
    </form>
-   <button className="register-button" onClick={this.props.handleNavigation}>Create Account</button>
+   <button className="toggle-register" onClick={() => this.props.handleNavigation('register')}>Register</button>
   </>
  );
 

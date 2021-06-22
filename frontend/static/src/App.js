@@ -14,13 +14,13 @@ class App extends React.Component {
       selection: !! Cookies.get('Authorization') ? 'messages' : 'login'
     };
   this.handleLogin = this.handleLogin.bind(this);
+  this.handleLogout = this.handleLogout.bind(this);
   this.handleNavigation = this.handleNavigation.bind(this);
   this.handleRegistration = this.handleRegistration.bind(this);
 }
 
-handleNavigation(e){
-  e.preventDefault();
-  this.setState({ selection : 'register' });
+handleNavigation(selection){
+  this.setState({ selection });
 }
 //for logout add button and set selection to 'logout'
 async handleLogin(user){
@@ -76,13 +76,13 @@ async handleRegistration(user){
 }
 
 //for logout add button and set selection to 'logout'
-async handleLogout(user){
+async handleLogout(){
 
   const options = {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'X-CSRFToken': Cookies.get('csrftoken')
+      'X-CSRFToken': Cookies.get('csrftoken'),
     },
   };
 
@@ -91,7 +91,7 @@ async handleLogout(user){
 
 if(response.ok){
   Cookies.remove('Authorization');
-  this.setState({ selection : 'login' });
+  this.setState({ selection: 'login' });
   }
 
 }
@@ -104,13 +104,16 @@ if(response.ok){
       <>
       {this.state.selection === 'register' && <Registration handleRegistration={this.handleRegistration} handleNavigation={this.handleNavigation} />}
       {this.state.selection === 'login' && <Login handleLogin={this.handleLogin} handleNavigation={this.handleNavigation}/>}
-      <button className="logout-button" onClick={() => this.setState({selection:'login'})}>Logout</button>
+      <button className="logout-button" onClick={this.handleLogout}>Logout</button>
+      <>
+
       <div className="chat-app-container">
         <header className="chat-app-header">
           <p id="header-text">Instant Messenger</p>
         </header>
         {this.state.selection === 'messages' &&  <MessageList /> }
       </div>
+      </>
       </>
     )
   }

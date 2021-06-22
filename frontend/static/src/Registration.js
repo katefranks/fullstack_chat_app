@@ -29,6 +29,7 @@ class Registration extends React.Component {
 
 render(){
  return (
+   <>
    <form onSubmit={this.handleSubmit}>
    <label htmlFor="">Registration</label>
    <br/>
@@ -42,6 +43,8 @@ render(){
     <br/>
     <button type="submit">Submit</button>
    </form>
+   <button className="toggle-login" onClick={() => this.props.handleNavigation('login')}>Login</button>
+   </>
  );
 
 }

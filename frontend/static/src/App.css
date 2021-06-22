@@ -21,12 +21,17 @@ body {
   text-align: center;
 }
 
-.logout-button {
+.toggle-login{
   height: 50px;
   width: 80px;
 }
 
-.register-button{
+.toggle-register{
+  height: 50px;
+  width: 80px;
+}
+
+.logout-button {
   height: 50px;
   width: 80px;
 }
