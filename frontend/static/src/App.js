@@ -89,6 +89,8 @@ componentDidMount(){
 }
 export default App;
 
+// <p className="user_image">{instantMessage.username}</p>
+
 // removing user_name to try to resolve 500 error. Code below works.
 
 // import React from 'react';

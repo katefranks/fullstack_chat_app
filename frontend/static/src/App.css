@@ -1,5 +1,6 @@
 #root {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
@@ -9,6 +10,17 @@ body {
   /* background-image: linear-gradient(to bottom right, magenta, aqua);  */
 
 }
+
+.registration-input {
+  background-color: #74ACE8;
+  text-align: center;
+}
+
+.login-input {
+  background-color: #B87AD3;
+  text-align: center;
+}
+
 
 .chat-app-container {
   background-color: #4A678A;
@@ -38,6 +50,20 @@ body {
   margin-top: 20px;
   text-shadow: 2px 2px 5px #292C33;
 }
+
+@media only screen and (max-width: 600px) {
+  #header-text{font-size: 26px;}
+}
+
+@media only screen and (max-width: 600px){
+  .input-box{max-width: 200px;}
+}
+
+/* @media only screen and (max-width: 600px){
+  .instant-message-text-display{align-self: center;}
+} */
+
+
 
 .instant-message-window{
   padding-inline-start: 0px;
@@ -104,6 +130,11 @@ li:nth-child(odd) .instant-message-text-display {
 li:nth-child(odd) .user_image{
   background-color: magenta; /* For browsers that do not support gradients */
   background-image: linear-gradient(to bottom right, aqua, magenta);
+}
+
+label{
+  color: #FFF;
+  padding: 5px;
 }
 
 .input-form{

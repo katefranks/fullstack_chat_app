@@ -51,11 +51,17 @@ console.log(user);
 render(){
  return (
    <form onSubmit={this.handleLogin}>
-    <input placeholder="username" name="username" type="text" value={this.state.username} onChange={this.handleInput}/>
-    <input placeholder="email" type="email" name="email" value={this.state.email} onChange={this.handleInput}/>
-    <input placeholder="password" type="password" name="password" value={this.state.password} onChange={this.handleInput}/>
+    <label htmlFor="">Login</label>
+    <br/>
+    <input className="login-input" placeholder="username" name="username" type="text" value={this.state.username} onChange={this.handleInput}/>
+    <br/>
+    <input className="login-input" placeholder="email" type="email" name="email" value={this.state.email} onChange={this.handleInput}/>
+    <br/>
+    <input className="login-input" placeholder="password" type="password" name="password" value={this.state.password} onChange={this.handleInput}/>
+    <br/>
     <button type="submit">Submit</button>
    </form>
+
  );
 
 }

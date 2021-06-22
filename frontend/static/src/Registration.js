@@ -53,10 +53,16 @@ console.log(user);
 render(){
  return (
    <form onSubmit={this.handleRegistration}>
-    <input placeholder="username" name="username" type="text" value={this.state.username} onChange={this.handleInput}/>
-    <input placeholder="email" type="email" name="email" value={this.state.email} onChange={this.handleInput}/>
-    <input placeholder="password" type="password" name="password1" value={this.state.password1} onChange={this.handleInput}/>
-    <input placeholder="repeat password" type="password" name="password2" value={this.state.password2} onChange={this.handleInput}/>
+   <label htmlFor="">Registration</label>
+   <br/>
+    <input className="registration-input" placeholder="username" name="username" type="text" value={this.state.username} onChange={this.handleInput}/>
+    <br/>
+    <input className="registration-input" placeholder="email" type="email" name="email" value={this.state.email} onChange={this.handleInput}/>
+    <br/>
+    <input className="registration-input" placeholder="password" type="password" name="password1" value={this.state.password1} onChange={this.handleInput}/>
+    <br/>
+    <input className="registration-input" placeholder="repeat password" type="password" name="password2" value={this.state.password2} onChange={this.handleInput}/>
+    <br/>
     <button type="submit">Submit</button>
    </form>
  );
