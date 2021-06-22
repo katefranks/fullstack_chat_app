@@ -31,23 +31,18 @@ async handleLogin(user){
       'Content-Type': 'application/json',
       'X-CSRFToken': Cookies.get('csrftoken')
     },
-    //removev this for logout
     body: JSON.stringify(user),
   };
 
   const handleError = (err) => console.warn(err);
-  //change login to logout below
   const response = await fetch('/rest-auth/login/', options).catch(handleError);
 
 if(response.ok){
-  //remove const data for logout
   const data = await response.json().catch(handleError);
-//change from set to remove. Only need say authorization for logout, not token part
   Cookies.set('Authorization', `Token ${data.key}`);
-  //change selection back to 'login' to kick them back out
   this.setState({ selection : 'messages' });
 } else {
-  //throw error
+  alert('Incorrect Username or Password, Please Try Again!')
 }
 }
 
@@ -102,23 +97,57 @@ if(response.ok){
     return(
 
       <>
-      {this.state.selection === 'register' && <Registration handleRegistration={this.handleRegistration} handleNavigation={this.handleNavigation} />}
-      {this.state.selection === 'login' && <Login handleLogin={this.handleLogin} handleNavigation={this.handleNavigation}/>}
-      <button className="logout-button" onClick={this.handleLogout}>Logout</button>
-      <>
 
-      <div className="chat-app-container">
-        <header className="chat-app-header">
-          <p id="header-text">Instant Messenger</p>
-        </header>
-        {this.state.selection === 'messages' &&  <MessageList /> }
+      <div className="signin-view">
+      {this.state.selection === 'register' &&
+        <div>
+          <Registration handleRegistration={this.handleRegistration} handleNavigation={this.handleNavigation}/>
+        </div>
+      }
+      {this.state.selection === 'login' &&
+        <div>
+          <Login handleLogin={this.handleLogin} handleNavigation={this.handleNavigation}/>
+        </div>}
+      <button className="logout-button" onClick={this.handleLogout}>Logout</button>
       </div>
-      </>
+
+      {this.state.selection === 'messages' &&
+        <div className="chat-app-container">
+            <header className="chat-app-header">
+              <p id="header-text">Instant Messenger</p>
+            </header>
+            <MessageList />}
+        </div>
+      }
       </>
     )
   }
 }
 export default App;
+
+
+// render(){
+//
+//   return(
+//
+//     <>
+//     {this.state.selection === 'register' && <Registration handleRegistration={this.handleRegistration} handleNavigation={this.handleNavigation} />}
+//     {this.state.selection === 'login' && <Login handleLogin={this.handleLogin} handleNavigation={this.handleNavigation}/>}
+//     <button className="logout-button" onClick={this.handleLogout}>Logout</button>
+//     <>
+//     <div className="chat-app-container">
+//       <header className="chat-app-header">
+//         <p id="header-text">Instant Messenger</p>
+//       </header>
+//       {this.state.selection === 'messages' &&  <MessageList /> }
+//     </div>
+//     </>
+//     </>
+//   )
+// }
+// }
+// export default App;
+
 
 // handleNavigation- to toggle between login or registration
 

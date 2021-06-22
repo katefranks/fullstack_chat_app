@@ -6,8 +6,8 @@
 
 body {
   background-color: #394453;
-  /* background-color: aqua; /* For browsers that do not support gradients */
-  /* background-image: linear-gradient(to bottom right, magenta, aqua);  */
+  /* background-color: aqua;
+  background-image: linear-gradient(to bottom right, magenta, aqua);  */
 
 }
 
@@ -34,6 +34,10 @@ body {
 .logout-button {
   height: 50px;
   width: 80px;
+}
+
+.signin-view{
+
 }
 
 .chat-app-container {
