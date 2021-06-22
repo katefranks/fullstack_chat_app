@@ -20,6 +20,7 @@ handleSubmit(e) {
   e.preventDefault();
   this.props.addInstantMessage(this.state);
   this.setState({message_text: ''});
+  // set state is a function that takes a function or an object.
 }
 
 

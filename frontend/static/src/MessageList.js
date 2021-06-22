@@ -35,10 +35,6 @@ addInstantMessage(message){
     });
 }
 
-
-
-
-
 componentDidMount(){
     fetch('/api/v1/instantMessages/')
       .then(response => response.json())

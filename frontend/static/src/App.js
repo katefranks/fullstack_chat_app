@@ -11,13 +11,60 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      // selection: !!Cookie.get('Authorization') ? 'chats' : 'login'
+      selection: !! Cookies.get('Authorization') ? 'messages' : 'login'
     };
-
+  this.handleLogin = this.handleLogin.bind(this);
+  this.handleRegistration = this.handleRegistration.bind(this);
 }
 
+async handleLogin(user){
 
-// set state is a function that takes a function or an object.
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': Cookies.get('csrftoken')
+    },
+    body: JSON.stringify(user),
+  };
+
+  const handleError = (err) => console.warn(err);
+  const response = await fetch('/rest-auth/login/', options).catch(handleError);
+
+if(response.ok){
+  const data = await response.json().catch(handleError);
+
+  Cookies.set('Authorization', `Token ${data.key}`);
+  this.setState({ selection : 'messages' });
+} else {
+  //throw error
+}
+}
+
+async handleRegistration(user){
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': Cookies.get('csrftoken')
+    },
+    body: JSON.stringify(user),
+  };
+
+  const handleError = (err) => console.warn(err);
+  const response = await fetch('/rest-auth/registration/', options).catch(handleError);
+
+  if(response.ok){
+  const data = await response.json().catch(handleError);
+
+  Cookies.set('Authorization', `Token ${data.key}`);
+  this.setState({ selection : 'messages' });
+} else {
+  //throw error
+}
+}
+
   render(){
 
     return(
@@ -36,6 +83,8 @@ class App extends React.Component {
   }
 }
 export default App;
+
+// handleNavigation- to toggle between login or registration
 
 ////////// BREAKING THE BELOW (ALL CODE IN APP JS) INTO MessageList & MessageForm COMPONENTS //////////////
 

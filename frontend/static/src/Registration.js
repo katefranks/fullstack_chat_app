@@ -12,7 +12,7 @@ class Registration extends React.Component {
       password2: '',
     }
 
-    this.handleRegistration = this.handleRegistration.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
 
   }
@@ -20,39 +20,16 @@ class Registration extends React.Component {
     this.setState({[e.target.name]: e.target.value});
   }
 
-  async handleRegistration(e){
-    e.preventDefault();
-
-    const user = {
-      username: this.state.username,
-      email: this.state.email,
-      password1: this.state.password1,
-      password2: this.state.password2,
-    }
-
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': Cookies.get('csrftoken')
-      },
-      body: JSON.stringify(user),
-    };
-
-    const handleError = (err) => console.warn(err);
-    const response = await fetch('/rest-auth/registration/', options).catch(handleError);
-    const data = await response.json().catch(handleError);
-
-console.log(user);
-  if(data.key){
-    Cookies.set('Authorization', `Token ${data.key}`);
+  handleSubmit(e){
+     e.preventDefault();
+     this.props.handleRegistration(this.state);
   }
-  }
+
+
 
 render(){
  return (
-   <form onSubmit={this.handleRegistration}>
+   <form onSubmit={this.handleSubmit}>
    <label htmlFor="">Registration</label>
    <br/>
     <input className="registration-input" placeholder="username" name="username" type="text" value={this.state.username} onChange={this.handleInput}/>
