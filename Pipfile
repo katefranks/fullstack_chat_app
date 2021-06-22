@@ -8,6 +8,8 @@ django = "*"
 djangorestframework = "*"
 gunicorn = "~=20.1.0"
 whitenoise = "~=5.2.0"
+django-rest-auth = "~=0.9.5"
+django-allauth = "~=0.44.0"
 
 [dev-packages]
 
