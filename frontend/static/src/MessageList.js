@@ -1,5 +1,6 @@
 import React from 'react';
 import MessageForm from './MessageForm'
+import Moment from 'react-moment';
 import Cookies from 'js-cookie';
 
 class MessageList extends React.Component{
@@ -43,7 +44,7 @@ componentDidMount(){
   render(){
     const instantMessages = this.state.instantMessages.map(instantMessage => (
       <li className="instant-messages" key={instantMessage.id}>
-      <p>Sent at: {instantMessage.created_at}</p>
+      <Moment format="MM/DD/YYYY  hh:mm:ss">{instantMessage.created_at}</Moment>
       <p className="user_image">{instantMessage.username}</p>
       <p className="instant-message-text-display">{instantMessage.message_text}</p>
       </li>

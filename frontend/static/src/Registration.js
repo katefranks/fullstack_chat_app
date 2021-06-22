@@ -43,7 +43,7 @@ render(){
     <br/>
     <button type="submit">Submit</button>
    </form>
-   <button className="toggle-login" onClick={() => this.props.handleNavigation('login')}>Login</button>
+   <button className="toggle-login" onClick={() => this.props.handleNavigation('login')}>Current User Login</button>
    </>
  );
 
