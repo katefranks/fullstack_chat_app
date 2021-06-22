@@ -32,7 +32,7 @@ componentDidMount(){
     e.preventDefault();
 
     const instantMessage = {
-      created_at: this.state.created_at,
+      // created_at: this.state.created_at,
       username: this.state.username,
       message_text: this.state.message_text,
     };
@@ -49,17 +49,14 @@ componentDidMount(){
 
     fetch('/api/v1/instantMessages/', options)
       .then(response => response.json())
-      .then(data => console.log(data))
-      // .then(data => this.setState({ instantMessages: data }));
-      .then(response => {
-            //logic to update state
-            const instantMessages = [...this.state.instantMessages];
-            instantMessages.push(instantMessage)
-            this.setState({ instantMessages });
-          });
-
+      .then(data => {
+        console.log(data);
+        const instantMessages = [...this.state.instantMessages]
+        instantMessages.push(data)
+        this.setState({instantMessages})
+      });
   }
-
+// set state is a function that takes a function or an object.
   render(){
     const instantMessages = this.state.instantMessages.map(instantMessage => (
       <li className="instant-messages" key={instantMessage.id}>
