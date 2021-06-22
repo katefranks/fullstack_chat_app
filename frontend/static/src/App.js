@@ -14,9 +14,15 @@ class App extends React.Component {
       selection: !! Cookies.get('Authorization') ? 'messages' : 'login'
     };
   this.handleLogin = this.handleLogin.bind(this);
+  this.handleNavigation = this.handleNavigation.bind(this);
   this.handleRegistration = this.handleRegistration.bind(this);
 }
 
+handleNavigation(e){
+  e.preventDefault();
+  this.setState({ selection : 'register' });
+}
+//for logout add button and set selection to 'logout'
 async handleLogin(user){
 
   const options = {
@@ -25,16 +31,20 @@ async handleLogin(user){
       'Content-Type': 'application/json',
       'X-CSRFToken': Cookies.get('csrftoken')
     },
+    //removev this for logout
     body: JSON.stringify(user),
   };
 
   const handleError = (err) => console.warn(err);
+  //change login to logout below
   const response = await fetch('/rest-auth/login/', options).catch(handleError);
 
 if(response.ok){
+  //remove const data for logout
   const data = await response.json().catch(handleError);
-
+//change from set to remove. Only need say authorization for logout, not token part
   Cookies.set('Authorization', `Token ${data.key}`);
+  //change selection back to 'login' to kick them back out
   this.setState({ selection : 'messages' });
 } else {
   //throw error
@@ -65,18 +75,41 @@ async handleRegistration(user){
 }
 }
 
+//for logout add button and set selection to 'logout'
+async handleLogout(user){
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': Cookies.get('csrftoken')
+    },
+  };
+
+  const handleError = (err) => console.warn(err);
+  const response = await fetch('/rest-auth/logout/', options).catch(handleError);
+
+if(response.ok){
+  Cookies.remove('Authorization');
+  this.setState({ selection : 'login' });
+  }
+
+}
+
+
   render(){
 
     return(
 
       <>
-      <Registration />
-      <Login />
+      {this.state.selection === 'register' && <Registration handleRegistration={this.handleRegistration} handleNavigation={this.handleNavigation} />}
+      {this.state.selection === 'login' && <Login handleLogin={this.handleLogin} handleNavigation={this.handleNavigation}/>}
+      <button className="logout-button" onClick={() => this.setState({selection:'login'})}>Logout</button>
       <div className="chat-app-container">
         <header className="chat-app-header">
           <p id="header-text">Instant Messenger</p>
         </header>
-        <MessageList />
+        {this.state.selection === 'messages' &&  <MessageList /> }
       </div>
       </>
     )

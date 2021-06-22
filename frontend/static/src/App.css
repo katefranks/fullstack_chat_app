@@ -21,6 +21,15 @@ body {
   text-align: center;
 }
 
+.logout-button {
+  height: 50px;
+  width: 80px;
+}
+
+.register-button{
+  height: 50px;
+  width: 80px;
+}
 
 .chat-app-container {
   background-color: #4A678A;

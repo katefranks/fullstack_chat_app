@@ -26,6 +26,7 @@ class Login extends React.Component {
 
 render(){
  return (
+   <>
    <form onSubmit={this.handleSubmit}>
     <label htmlFor="">Login</label>
     <br/>
@@ -37,7 +38,8 @@ render(){
     <br/>
     <button type="submit">Submit</button>
    </form>
-
+   <button className="register-button" onClick={this.props.handleNavigation}>Create Account</button>
+  </>
  );
 
 }
