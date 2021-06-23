@@ -116,8 +116,8 @@ if(response.ok){
             <header className="chat-app-header">
               <p id="header-text">Instant Messenger</p>
             </header>
-            <MessageList />}
-        </div>
+            <MessageList />
+        </div>}
       }
       </>
     )

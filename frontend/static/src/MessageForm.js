@@ -26,7 +26,6 @@ handleSubmit(e) {
 
 
 render(){
-
   return(
     <form className="input-form" onSubmit={this.handleSubmit}>
       <input className="input-box" type="text" name="message_text" value={this.state.message_text} onChange={this.handleInput} placeholder="Enter Text"/>
