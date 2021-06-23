@@ -8,6 +8,8 @@ class MessageList extends React.Component{
     super(props);
     this.state = {
       instantMessages: [],
+      isEditing : null,
+      edit : "",
     };
 
     this.addInstantMessage = this.addInstantMessage.bind(this);
@@ -57,20 +59,35 @@ deleteMessage(id){
   });
 }
 
-editMessage(id){
-  const instantMessage = {
-    message_text: '',
 
-  }
-  const options = {
-    method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json',
-      'X-CSRFToken': Cookies.get('csrftoken'),
-    },
-    body: JSON.stringify(instantMessage),
-  }
+editMessage(){
+// (message, id)
+  this.setState({isEditing : null})
+
+// const instantMessage = {}
+
+  // const options = {
+  //   method: 'PATCH',
+  //   headers: {
+  //     'Content-Type': 'application/json',
+  //     'X-CSRFToken': Cookies.get('csrftoken'),
+  //   },
+  //   body: JSON.stringify(message),
+  // }
+  //
+  //
+  // fetch(`/api/v1/instantMessages/${id}`, options)
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     console.log(data);
+  //     const instantMessages = [...this.state.instantMessages];
+  //     instantMessages.push(data);
+  //     this.setState({instantMessages});
+  //   });
 }
+
+//logic for save button
+
 
 componentDidMount(){
     fetch('/api/v1/instantMessages/')
@@ -82,9 +99,9 @@ componentDidMount(){
       <li className="instant-messages" key={instantMessage.id}>
       <Moment format="MM/DD/YYYY  hh:mm:ss">{instantMessage.created_at}</Moment>
       <p className="user_image">{instantMessage.username}</p>
-      <p className="instant-message-text-display">{instantMessage.message_text}</p>
+      { this.state.isEditing === instantMessage.id ? <input className="input-box" type="text" name="message_text" value={this.state.edit} onChange={this.handleInput} placeholder={instantMessage.message_text}/> : <p className="instant-message-text-display">{instantMessage.message_text}</p> }
       <button type='button' onClick={() => this.deleteMessage(instantMessage.id)}>DELETE</button>
-      <button>EDIT</button>
+      {this.state.isEditing === instantMessage.id ?  <button type= 'button' onClick={() => this.editMessage() } >SAVE</button> : <button type= 'button' onClick={() => this.setState({isEditing : instantMessage.id})}>EDIT</button>}
       </li>
     ))
     return(
@@ -98,3 +115,5 @@ componentDidMount(){
   }
 }
 export default MessageList;
+
+// <button type='button' onClick={() => this.deleteMessage(instantMessage.id)}>DELETE</button>
