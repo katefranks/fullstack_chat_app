@@ -11,7 +11,8 @@ class MessageList extends React.Component{
     };
 
     this.addInstantMessage = this.addInstantMessage.bind(this);
-
+    this.deleteMessage = this.deleteMessage.bind(this);
+    this.editMessage = this.editMessage.bind(this);
 }
 
 addInstantMessage(message){
@@ -36,6 +37,41 @@ addInstantMessage(message){
     });
 }
 
+deleteMessage(id){
+  const options = {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': Cookies.get('csrftoken')
+    }
+  }
+  fetch(`/api/v1/instantMessages/${id}`, options)
+    .then(response => {
+      const instantMessages = [...this.state.instantMessages];
+      const index = instantMessages.findIndex(instantMessage => instantMessage.id === id);
+      instantMessages.splice(index, 1);
+      this.setState({ instantMessages });
+    })
+  .catch((error) => {
+    console.error('Error: ', error);
+  });
+}
+
+editMessage(id){
+  const instantMessage = {
+    message_text: '',
+
+  }
+  const options = {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': Cookies.get('csrftoken'),
+    },
+    body: JSON.stringify(instantMessage),
+  }
+}
+
 componentDidMount(){
     fetch('/api/v1/instantMessages/')
       .then(response => response.json())
@@ -47,6 +83,8 @@ componentDidMount(){
       <Moment format="MM/DD/YYYY  hh:mm:ss">{instantMessage.created_at}</Moment>
       <p className="user_image">{instantMessage.username}</p>
       <p className="instant-message-text-display">{instantMessage.message_text}</p>
+      <button type='button' onClick={() => this.deleteMessage(instantMessage.id)}>DELETE</button>
+      <button>EDIT</button>
       </li>
     ))
     return(
