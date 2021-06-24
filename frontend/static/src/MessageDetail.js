@@ -18,8 +18,14 @@ class MessageDetail extends React.Component{
   }
 
   saveMessage() {
-    this.props.editMessage();
-    //id & updated text.   could also pass whole obj
+
+    const instantMessage = this.props.instantMessage;
+
+    instantMessage.message_text = this.state.message_text;
+
+    this.props.editMessage(instantMessage);
+
+
     this.setState({isEditing: false});
   }
 
