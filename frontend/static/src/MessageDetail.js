@@ -20,13 +20,14 @@ class MessageDetail extends React.Component{
   saveMessage() {
 
     const instantMessage = this.props.instantMessage;
+    //calls instantMessage from the parent
 
     instantMessage.message_text = this.state.message_text;
-
+    // sets the message from instantMessage to state
     this.props.editMessage(instantMessage);
-
-
+    // calls the method editMessage from the parent
     this.setState({isEditing: false});
+    // changes isEditing back to false so it returns to the default view
   }
 
 

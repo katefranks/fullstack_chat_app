@@ -64,30 +64,32 @@ deleteMessage(id){
 }
 
 
-editMessage(){
-// (message, id)
-  // this.setState({isEditing : null})
+editMessage(instantMessage){
 
-// const instantMessage = {}
+  const options = {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'X-CSRFToken': Cookies.get('csrftoken'),
+    },
+    body: JSON.stringify(instantMessage),
+    //the content being sent to the backend. 
+  }
 
-  // const options = {
-  //   method: 'PATCH',
-  //   headers: {
-  //     'Content-Type': 'application/json',
-  //     'X-CSRFToken': Cookies.get('csrftoken'),
-  //   },
-  //   body: JSON.stringify(message),
-  // }
-  //
-  //
-  // fetch(`/api/v1/instantMessages/${id}`, options)
-  //   .then(response => response.json())
-  //   .then(data => {
-  //     console.log(data);
-  //     const instantMessages = [...this.state.instantMessages];
-  //     instantMessages.push(data);
-  //     this.setState({instantMessages});
-  //   });
+
+  fetch(`/api/v1/instantMessages/${instantMessage.id}/`, options)
+    .then(response => response.json())
+    // takes the response from the fetch request and turns it into json
+    .then(data => {
+      const instantMessages = [...this.state.instantMessages];
+      // makes a shallow copy of instantMessages
+      const index = instantMessages.findIndex(message_text => message_text.id === instantMessage.id );
+      // finds the index of the messag_text and makes sure the instantmessage id is equal to the original instantMessage id to replace it
+      instantMessage[index] = data;
+      // changes the value of the message to the value of the data that was PUT up
+      this.setState({ instantMessages });
+      // sets state to the new list of messages
+    });
 }
 
 //logic for save button
