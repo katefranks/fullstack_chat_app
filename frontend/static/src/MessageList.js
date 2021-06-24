@@ -9,8 +9,6 @@ class MessageList extends React.Component{
     super(props);
     this.state = {
       instantMessages: [],
-      isEditing : null,
-      edit : "",
     };
 
     this.handleInput = this.handleInput.bind(this);
@@ -68,7 +66,7 @@ deleteMessage(id){
 
 editMessage(){
 // (message, id)
-  this.setState({isEditing : null})
+  // this.setState({isEditing : null})
 
 // const instantMessage = {}
 
@@ -109,14 +107,8 @@ componentDidMount(){
   //
   render(){
     const instantMessages = this.state.instantMessages.map(instantMessage => (
-      <li className="instant-messages" key={instantMessage.id}>
-      <Moment format="MM/DD/YYYY  hh:mm:ss">{instantMessage.created_at}</Moment>
-      <p className="user_image">{instantMessage.username}</p>
-      { this.state.isEditing === instantMessage.id ? <input className="input-box" type="text" name="edit" value={this.state.edit} onChange={this.handleInput} placeholder={instantMessage.message_text}/> : <p className="instant-message-text-display">{instantMessage.message_text}</p> }
-      <button type='button' onClick={() => this.deleteMessage(instantMessage.id)}>DELETE</button>
-      {this.state.isEditing === instantMessage.id ?  <button type= 'button' onClick={() => this.editMessage() } >SAVE</button> : <button type= 'button' onClick={() => this.setState({isEditing : instantMessage.id})}>EDIT</button>}
-      </li>
-    ))
+      <MessageDetail key={instantMessage.id} instantMessage={instantMessage} deleteMessage={this.deleteMessage} editMessage={this.editMessage}/>
+    ));
     return(
       <>
         <ul instantmessages={this.state.instantMessages} className="instant-message-window">
