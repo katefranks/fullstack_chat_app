@@ -12,12 +12,14 @@ body {
 }
 
 .registration-input {
-  background-color: #74ACE8;
+  /* background-color: #74ACE8; */
+  background-color: #FFF;
   text-align: center;
 }
 
 .login-input {
-  background-color: #B87AD3;
+  /* background-color: #B87AD3; */
+  background-color: #FFF;
   text-align: center;
 }
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import Cookies from 'js-cookie';
 
+import './Login.css';
+
 class Login extends React.Component {
 
   constructor(props){
@@ -27,7 +29,7 @@ class Login extends React.Component {
 render(){
  return (
    <>
-   <form onSubmit={this.handleSubmit}>
+   <form onSubmit={this.handleSubmit} className="form-login">
     <label htmlFor="">Login</label>
     <br/>
     <input className="login-input" placeholder="username" name="username" type="text" value={this.state.username} onChange={this.handleInput}/>

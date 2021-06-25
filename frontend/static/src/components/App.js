@@ -93,31 +93,27 @@ if(response.ok){
 
 
   render(){
+    let html;
+
+    if(this.state.selection === 'register') {
+      html = <Registration handleRegistration={this.handleRegistration} handleNavigation={this.handleNavigation}/>;
+    } else if (this.state.selection === 'login') {
+      html = <Login handleLogin={this.handleLogin} handleNavigation={this.handleNavigation}/>;
+    } else {
+      html = <MessageList />
+    }
 
     return(
-
       <>
-
-      <div className="signin-view">
-      {this.state.selection === 'register' &&
-        <div>
-          <Registration handleRegistration={this.handleRegistration} handleNavigation={this.handleNavigation}/>
+        <div className="signin-view">
+          <button className="logout-button" onClick={this.handleLogout}>Logout</button>
         </div>
-      }
-      {this.state.selection === 'login' &&
-        <div>
-          <Login handleLogin={this.handleLogin} handleNavigation={this.handleNavigation}/>
-        </div>}
-      <button className="logout-button" onClick={this.handleLogout}>Logout</button>
-      </div>
-
-      {this.state.selection === 'messages' &&
         <div className="chat-app-container">
-            <header className="chat-app-header">
-              <p id="header-text">Instant Messenger</p>
-            </header>
-            <MessageList />
-        </div>}
+          <header className="chat-app-header">
+            <p id="header-text">Instant Messenger</p>
+          </header>
+          {html}
+        </div>
       </>
     )
   }

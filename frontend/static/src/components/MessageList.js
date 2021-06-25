@@ -15,10 +15,19 @@ class MessageList extends React.Component{
     this.addInstantMessage = this.addInstantMessage.bind(this);
     this.deleteMessage = this.deleteMessage.bind(this);
     this.editMessage = this.editMessage.bind(this);
+    this.fetchData = this.fetchData.bind(this);
 }
 
 handleInput(e) {
   this.setState({[e.target.name]: e.target.value});
+}
+
+componentDidMount(){
+  this.retrieveMessages = setInterval(this.fetchData, 1000)
+}
+
+componentWillUnmount(){
+  clearInterval(this.retrieveMessages)
 }
 
 addInstantMessage(message){
@@ -73,7 +82,7 @@ editMessage(instantMessage){
       'X-CSRFToken': Cookies.get('csrftoken'),
     },
     body: JSON.stringify(instantMessage),
-    //the content being sent to the backend. 
+    //the content being sent to the backend.
   }
 
 
@@ -95,7 +104,7 @@ editMessage(instantMessage){
 //logic for save button
 
 
-componentDidMount(){
+fetchData(){
     fetch('/api/v1/instantMessages/')
       .then(response => response.json())
       .then(data => this.setState({ instantMessages: data }));

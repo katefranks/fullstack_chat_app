@@ -31,11 +31,12 @@ class MessageDetail extends React.Component{
   }
 
   render(){
-    const instantMessage = this.props.instantMessage
+    const instantMessage = this.props.instantMessage;
+
     return(
       <li className="instant-messages">
         <Moment format="MM/DD/YYYY  hh:mm:ss">{instantMessage.created_at}</Moment>
-        <p className="user_image">{instantMessage.username}</p>
+        <p className="user_image">{instantMessage.username.toUpperCase()}</p>
         {
           this.state.isEditing
           ? <input className="input-box" type="text" name="message_text" value={this.state.message_text} onChange={this.handleInput} />
@@ -56,4 +57,4 @@ class MessageDetail extends React.Component{
 export default MessageDetail;
 
 
-// {instantMessage.has_owner_permissions ?     }
+//   const instantMessage = this.props.instantMessage bc this is put at the top of the render, you do not have to use this.props in all of the returns
