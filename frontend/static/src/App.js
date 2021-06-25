@@ -118,7 +118,6 @@ if(response.ok){
             </header>
             <MessageList />
         </div>}
-      }
       </>
     )
   }

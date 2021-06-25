@@ -1,13 +1,37 @@
-# from rest_framework import permissions
+from rest_framework import permissions
 #
-# #IsAuthorReadOnly can be whatever you want it to be- keep name short and specific
-# class IsAuthorReadOnly(permissions.BasePermission):
-#     def has_object_permission(self, request, view, obj):
-#         if request.method in permissions.SAFE_METHODS:
-#             return True
-#
-#         return obj.user == request.user
+# #IsAuthOrReadOnly can be whatever you want it to be- keep name short and specific
 
+class IsAuthOrReadOnly(permissions.BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        if request.method == 'DELETE':
+            return obj.username == request.user or request.user.its_staff
+        if request.method == 'PUT':
+            return obj.username == request.user
+
+######
+
+
+
+
+
+
+
+# safe methods:
+# options, get, head
+
+
+
+
+
+
+
+
+
+#########
 #obj is whatever the name is that you created
 #user may have a different name- it's whatever the owner is to the foreign key.
 
@@ -35,3 +59,7 @@
     #keep in mind that before a message can be created and have an association with a room, that the ROOM doesn't exist.
     #we can decide whether or not we want to allow people to create rooms or not.
     #a user might be able to create a room.   A user can choose which room to go into to see the messages in that room.
+
+
+    # if it's a PUT request-
+    # if delete request- obj user is request user or staff, otherwise return false

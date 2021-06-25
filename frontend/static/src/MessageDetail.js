@@ -30,7 +30,6 @@ class MessageDetail extends React.Component{
     // changes isEditing back to false so it returns to the default view
   }
 
-
   render(){
     const instantMessage = this.props.instantMessage
     return(
@@ -42,14 +41,19 @@ class MessageDetail extends React.Component{
           ? <input className="input-box" type="text" name="message_text" value={this.state.message_text} onChange={this.handleInput} />
           : <p className="instant-message-text-display">{instantMessage.message_text}</p>
         }
-        <button type='button' onClick={() => this.props.deleteMessage(instantMessage.id)}>DELETE</button>
+        {
+        instantMessage.has_owner_permissions && <button type='button' onClick={() => this.props.deleteMessage(instantMessage.id)}>DELETE</button>
+        }
         {
           this.state.isEditing
           ? <button type='button' onClick={this.saveMessage}>SAVE</button>
-          : <button type='button' onClick={() => this.setState({isEditing : true})}>EDIT</button>
+          : instantMessage.has_owner_permissions && <button type='button' onClick={() => this.setState({isEditing : true})}>EDIT</button>
         }
       </li>
     )
   }
 } //closes component
 export default MessageDetail;
+
+
+// {instantMessage.has_owner_permissions ?     }
