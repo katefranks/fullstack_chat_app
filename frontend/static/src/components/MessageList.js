@@ -1,6 +1,7 @@
 import React from 'react';
 import MessageForm from './MessageForm'
 import MessageDetail from './MessageDetail'
+
 import Moment from 'react-moment';
 import Cookies from 'js-cookie';
 
@@ -125,7 +126,7 @@ fetchData(){
         <ul instantmessages={this.state.instantMessages} className="instant-message-window">
           {instantMessages}
         </ul>
-        <MessageForm addInstantMessage={this.addInstantMessage} />
+        <MessageForm addInstantMessage={this.addInstantMessage} handleLogout={this.props.handleLogout}/>
       </>
     )
   }

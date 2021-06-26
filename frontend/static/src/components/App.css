@@ -5,22 +5,19 @@
 }
 
 body {
-  background-color: #A6A6A6;
-  /* background-color: #394453; */
-  /* background-color: aqua;
-  background-image: linear-gradient(to bottom right, magenta, aqua);  */
+  background-color: #FFF;
 
 }
 
 .form-login {
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-@media only screen and (max-height: 600px) {
+@media only screen and (max-width: 600px) {
   .form-login{
     margin-top: 15px;
     margin-bottom: 20px;
@@ -29,41 +26,84 @@ body {
 
 
 .registration-input {
-  /* background-color: #74ACE8; */
   background-color: #FFF;
   text-align: center;
 }
 
-.login-input {
-  /* background-color: #B87AD3; */
-  background-color: #FFF;
-  text-align: center;
-  height: 30px;
+.login-label{
+  color: #2B2B2B;
+  font-weight: bold;
   font-size: 16px;
+  text-align: center;
 }
 
-.toggle-login{
-  height: 50px;
-  width: 80px;
-}
+.login-input{
+    background-color: #35363A;
+    color: #FFF;
+    height: 30px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 1px solid #999999;
+    box-shadow: 2px 2px 5px #292c33;
+    font-size: 16px;
+    text-align: center;
+    }
+
+.login-input:hover{
+    box-shadow: 4px 4px 5px #292C33;
+    transform: translateY(1px);
+    }
 
 .toggle-register{
-  height: 50px;
-  width: 80px;
-  margin-bottom: 100px;
+  height: 70px;
+  width: 120px;
+  margin-bottom: 70px;
+  background-color: #2B2B2B;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 2px 2px 5px #292C33;
 }
 
-@media only screen and (max-height: 600px) {
+.toggle-register:hover{
+  cursor: pointer;
+  box-shadow: 4px 4px 5px #292C33;
+  transform: translateY(1px);
+}
+
+.toggle-register:active {
+  transform: translateY(3px) ;
+}
+
+@media only screen and (max-width: 600px) {
   .toggle-register{margin-bottom: 15px;}
 }
 
-.logout-button {
-  height: 50px;
+.submit-button{
+  height: 42px;
   width: 80px;
+  margin-bottom: 100px;
+  background-color: #2B2B2B;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 50%;
+  border: none;
+  margin: 2px;
+  box-shadow: 2px 2px 5px #292C33;
 }
 
-.signin-view{
+.submit-button:hover{
+  cursor: pointer;
+  box-shadow: 4px 4px 5px #292C33;
+  transform: translateY(1px);
+}
 
+.submit-button:active {
+  transform: translateY(3px) ;
+  /* transform: translateX(1px); */
 }
 
 .chat-app-container {
@@ -134,8 +174,9 @@ body {
   align-items: center;
 }
 
+
 .instant-message-text-display {
-  background-color: #64A2E4;
+  background-color: #5851DB;
   font-size: 20px;
   text-shadow: 2px 2px 1px #292c33;
   color: #FFF;
@@ -156,10 +197,7 @@ li:nth-child(odd) .instant-message-text-display {
 }
 
 .user_image{
-
   /* background-color: aqua;  */
-  /* For browsers that do not support gradients */
-  /* background-image: linear-gradient(to bottom right, magenta, aqua); */
   background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
   height: 65px;
   width: 65px;
@@ -188,10 +226,15 @@ label{
 
 .input-form{
   margin-bottom: 20px;
+  display: flex;
+  flex-flow: wrap-reverse;
+  align-items: center;
+  justify-content: center;
 }
 
 .input-box {
-  background-color: #aebfd1;
+  background-color: #35363A;
+  color: #FFF;
   width: 300px;
   height: 70px;
   margin: 10px;
@@ -208,10 +251,40 @@ label{
   transform: translateY(1px);
 }
 
+.button-container{
+  display: flex;
+  margin-bottom: 10px;
+  flex-wrap: wrap-reverse;
+  align-items: center;
+}
+
+.message-detail-buttons{
+  background-color: #2B2B2B;
+  height: 25px;
+  width: 25px;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 50%;
+  border: none;
+  margin: 2px;
+  box-shadow: 2px 2px 5px #292C33;
+}
+
+.message-detail-buttons:hover{
+  cursor: pointer;
+  box-shadow: 4px 4px 5px #292C33;
+  transform: translateY(1px);
+}
+
+.message-detail-buttons:active {
+  transform: translateY(3px) ;
+}
+
 .form-button{
-  background-color: #65D46E;
-  height: 65px;
-  width: 65px;
+  background-color: #2B2B2B;
+  height: 70px;
+  width: 70px;
   color: #FFF;
   font-weight: bold;
   font-size: 18px;
@@ -228,29 +301,4 @@ label{
 
 .form-button:active {
   transform: translateY(3px) ;
-  /* transform: translateX(1px); */
 }
-/* .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-/* @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-} */
-
-
-/* @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */

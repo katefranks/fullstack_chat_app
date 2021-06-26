@@ -30,20 +30,20 @@ class Registration extends React.Component {
 render(){
  return (
    <>
-   <form onSubmit={this.handleSubmit}>
-   <label htmlFor="">Registration</label>
+   <form className="form-login" onSubmit={this.handleSubmit}>
+   <label className="login-label" htmlFor="">New User? <br/> Register!</label>
    <br/>
-    <input className="registration-input" placeholder="username" name="username" type="text" value={this.state.username} onChange={this.handleInput}/>
+    <input className="login-input" placeholder="username" name="username" type="text" value={this.state.username} onChange={this.handleInput}/>
     <br/>
-    <input className="registration-input" placeholder="email" type="email" name="email" value={this.state.email} onChange={this.handleInput}/>
+    <input className="login-input" placeholder="email" type="email" name="email" value={this.state.email} onChange={this.handleInput}/>
     <br/>
-    <input className="registration-input" placeholder="password" type="password" name="password1" value={this.state.password1} onChange={this.handleInput}/>
+    <input className="login-input" placeholder="password" type="password" name="password1" value={this.state.password1} onChange={this.handleInput}/>
     <br/>
-    <input className="registration-input" placeholder="repeat password" type="password" name="password2" value={this.state.password2} onChange={this.handleInput}/>
+    <input className="login-input" placeholder="re-type password" type="password" name="password2" value={this.state.password2} onChange={this.handleInput}/>
     <br/>
-    <button type="submit">Submit</button>
+    <button className="submit-button" type="submit">Submit</button>
    </form>
-   <button className="toggle-login" onClick={() => this.props.handleNavigation('login')}>Current User Login</button>
+   <button className="toggle-register" onClick={() => this.props.handleNavigation('login')}>Current User Login</button>
    </>
  );
 

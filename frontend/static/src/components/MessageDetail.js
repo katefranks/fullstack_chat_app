@@ -1,5 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
+import 'font-awesome/css/font-awesome.min.css';
+
 
 class MessageDetail extends React.Component{
   constructor(props){
@@ -42,14 +44,17 @@ class MessageDetail extends React.Component{
           ? <input className="input-box" type="text" name="message_text" value={this.state.message_text} onChange={this.handleInput} />
           : <p className="instant-message-text-display">{instantMessage.message_text}</p>
         }
+        <div className="button-container">
         {
-        instantMessage.has_owner_permissions && <button type='button' onClick={() => this.props.deleteMessage(instantMessage.id)}>DELETE</button>
+        instantMessage.has_owner_permissions && <button className="message-detail-buttons" type='button' onClick={() => this.props.deleteMessage(instantMessage.id)}><i className="fa fa-trash-o" aria-hidden="true"></i></button>
         }
         {
           this.state.isEditing
-          ? <button type='button' onClick={this.saveMessage}>SAVE</button>
-          : instantMessage.has_owner_permissions && <button type='button' onClick={() => this.setState({isEditing : true})}>EDIT</button>
+          ? <button className="message-detail-buttons" type='button' onClick={this.saveMessage}><i class="fa fa-floppy-o" aria-hidden="true"></i></button>
+          : instantMessage.has_owner_permissions &&
+          <button className="message-detail-buttons" type='button' onClick={() => this.setState({isEditing : true})}><i class="fa fa-pencil" aria-hidden="true"></i></button>
         }
+        </div>
       </li>
     )
   }

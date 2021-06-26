@@ -4,6 +4,7 @@ import Registration from './Registration';
 import Login from './Login';
 import MessageList from './MessageList';
 import MessageForm from './MessageForm';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './App.css';
 
 
@@ -100,14 +101,11 @@ if(response.ok){
     } else if (this.state.selection === 'login') {
       html = <Login handleLogin={this.handleLogin} handleNavigation={this.handleNavigation}/>;
     } else {
-      html = <MessageList />
+      html = <MessageList handleLogout={this.handleLogout} />
     }
 
     return(
       <>
-        <div className="signin-view">
-          <button className="logout-button" onClick={this.handleLogout}>Logout</button>
-        </div>
         <div className="chat-app-container">
           <header className="chat-app-header">
             <p id="header-text">¿Qué tal?</p>
@@ -119,3 +117,21 @@ if(response.ok){
   }
 }
 export default App;
+
+
+// return(
+//   <>
+//     <div className="signin-view">
+//       <button className="logout-button" onClick={this.handleLogout}>Logout</button>
+//     </div>
+//     <div className="chat-app-container">
+//       <header className="chat-app-header">
+//         <p id="header-text">¿Qué tal?</p>
+//       </header>
+//       {html}
+//     </div>
+//   </>
+// )
+// }
+// }
+// export default App;

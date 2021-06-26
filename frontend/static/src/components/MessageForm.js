@@ -27,10 +27,13 @@ handleSubmit(e) {
 
 render(){
   return(
-    <form className="input-form" onSubmit={this.handleSubmit}>
-      <input className="input-box" type="text" name="message_text" value={this.state.message_text} onChange={this.handleInput} placeholder="Enter Text"/>
-      <button className="form-button" type="submit" value="Submit">SEND</button>
-    </form>
+    <div className="message-form-details">
+      <form className="input-form" onSubmit={this.handleSubmit}>
+        <button className="form-button" onClick={this.props.handleLogout}>Logout</button>
+        <input className="input-box" type="text" name="message_text" value={this.state.message_text} onChange={this.handleInput} placeholder="Enter Text"/>
+        <button className="form-button" type="submit" value="Submit">SEND</button>
+      </form>
+    </div>
   )
 }
 }

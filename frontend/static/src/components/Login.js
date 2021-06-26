@@ -30,7 +30,7 @@ render(){
  return (
    <>
    <form onSubmit={this.handleSubmit} className="form-login">
-    <label htmlFor="">Login</label>
+    <label className="login-label" htmlFor="">Login:</label>
     <br/>
     <input className="login-input" placeholder="username" name="username" type="text" value={this.state.username} onChange={this.handleInput}/>
     <br/>
@@ -38,7 +38,7 @@ render(){
     <br/>
     <input className="login-input" placeholder="password" type="password" name="password" value={this.state.password} onChange={this.handleInput}/>
     <br/>
-    <button type="submit">Submit</button>
+    <button className="submit-button" type="submit">Submit</button>
    </form>
    <button className="toggle-register" onClick={() => this.props.handleNavigation('register')}>Create New Account</button>
   </>
