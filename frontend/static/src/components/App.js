@@ -110,7 +110,7 @@ if(response.ok){
         </div>
         <div className="chat-app-container">
           <header className="chat-app-header">
-            <p id="header-text">Instant Messenger</p>
+            <p id="header-text">¿Qué tal?</p>
           </header>
           {html}
         </div>

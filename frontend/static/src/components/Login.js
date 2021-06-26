@@ -1,7 +1,7 @@
 import React from 'react';
-import Cookies from 'js-cookie';
+// import Cookies from 'js-cookie';
 
-import './Login.css';
+// import './Login.css';
 
 class Login extends React.Component {
 
