@@ -10,7 +10,6 @@ class MessageForm extends React.Component {
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    // this.addToChatWindow = this.addToChatWindow.bind(this);
 }
 
 handleInput(e) {

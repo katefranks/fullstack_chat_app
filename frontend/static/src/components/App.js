@@ -3,8 +3,6 @@ import Cookies from 'js-cookie';
 import Registration from './Registration';
 import Login from './Login';
 import MessageList from './MessageList';
-import MessageForm from './MessageForm';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import './App.css';
 
 
@@ -23,7 +21,7 @@ class App extends React.Component {
 handleNavigation(selection){
   this.setState({ selection });
 }
-//for logout add button and set selection to 'logout'
+
 async handleLogin(user){
 
   const options = {
@@ -71,7 +69,7 @@ async handleRegistration(user){
 }
 }
 
-//for logout add button and set selection to 'logout'
+
 async handleLogout(){
 
   const options = {
@@ -117,21 +115,3 @@ if(response.ok){
   }
 }
 export default App;
-
-
-// return(
-//   <>
-//     <div className="signin-view">
-//       <button className="logout-button" onClick={this.handleLogout}>Logout</button>
-//     </div>
-//     <div className="chat-app-container">
-//       <header className="chat-app-header">
-//         <p id="header-text">¿Qué tal?</p>
-//       </header>
-//       {html}
-//     </div>
-//   </>
-// )
-// }
-// }
-// export default App;

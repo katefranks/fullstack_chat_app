@@ -1,8 +1,6 @@
 import React from 'react';
 import MessageForm from './MessageForm'
 import MessageDetail from './MessageDetail'
-
-import Moment from 'react-moment';
 import Cookies from 'js-cookie';
 
 class MessageList extends React.Component{
@@ -94,29 +92,19 @@ editMessage(instantMessage){
       const instantMessages = [...this.state.instantMessages];
       // makes a shallow copy of instantMessages
       const index = instantMessages.findIndex(message_text => message_text.id === instantMessage.id );
-      // finds the index of the messag_text and makes sure the instantmessage id is equal to the original instantMessage id to replace it
+      // finds the index of the message_text and makes sure the instantmessage id is equal to the original instantMessage id to replace it
       instantMessage[index] = data;
       // changes the value of the message to the value of the data that was PUT up
       this.setState({ instantMessages });
-      // sets state to the new list of messages
     });
 }
-
-//logic for save button
-
 
 fetchData(){
     fetch('/api/v1/instantMessages/')
       .then(response => response.json())
       .then(data => this.setState({ instantMessages: data }));
   }
-//
-// <form className="input-form" onSubmit={this.handleSubmit}>
-//   <input className="input-box" type="text" name="message_text" value={this.state.message_text} onChange={this.handleInput} placeholder="Enter Text"/>
-//   <button className="form-button" type="submit" value="Submit">SEND</button>
-// </form>
 
-  //
   render(){
     const instantMessages = this.state.instantMessages.map(instantMessage => (
       <MessageDetail key={instantMessage.id} instantMessage={instantMessage} deleteMessage={this.deleteMessage} editMessage={this.editMessage}/>
@@ -132,21 +120,3 @@ fetchData(){
   }
 }
 export default MessageList;
-
-// the below is the code while editing message detail
-// render(){
-//
-//   const instantMessages = this.state.instantMessages.map(instantMessage => <MessageDetail/>)
-//
-//   return(
-//     <>
-//       <ul instantmessages={this.state.instantMessages} className="instant-message-window">
-//         {instantMessages}
-//       </ul>
-//       <MessageForm addInstantMessage={this.addInstantMessage} />
-//       <MessageDetail editMessage={this.editMessage} deleteMessage={this.deleteMessage} handleInput={this.handleInput} />
-//     </>
-// );
-// }
-// }
-// export default MessageList;
