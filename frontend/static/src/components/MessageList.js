@@ -92,12 +92,14 @@ editMessage(instantMessage){
       const instantMessages = [...this.state.instantMessages];
       // makes a shallow copy of instantMessages
       const index = instantMessages.findIndex(message_text => message_text.id === instantMessage.id );
-      // finds the index of the message_text and makes sure the instantmessage id is equal to the original instantMessage id to replace it
+      // finds the index of the messag_text and makes sure the instantmessage id is equal to the original instantMessage id to replace it
       instantMessage[index] = data;
       // changes the value of the message to the value of the data that was PUT up
       this.setState({ instantMessages });
+      // sets state to the new list of messages
     });
 }
+
 
 fetchData(){
     fetch('/api/v1/instantMessages/')

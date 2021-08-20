@@ -27,7 +27,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'fullstack-news-app-katefranks.herokuapp.com',
+    'fullstack-chat-app-katefranks.herokuapp.com',
     '127.0.0.1',
 ]
 
@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     # 3rd Party
     'rest_framework',
     'rest_framework.authtoken',
-    # 'rest_auth',
+    'rest_auth',
 
     'allauth',
     'allauth.account',
