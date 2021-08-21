@@ -33,7 +33,7 @@ render(){
    <>
    <form onSubmit={this.handleSubmit} className="form-login">
     <label className="login-label" htmlFor="">Login:</label>
-    <button onClick={this.demoLogin} type="button"className="submit-button">Demo</button>
+    <button onClick={this.demoLogin} type="submit" className="submit-button">Demo</button>
     <br/>
     <input className="login-input" placeholder="username" name="username" type="text" value={this.state.username} onChange={this.handleInput}/>
     <br/>
